@@ -1,0 +1,77 @@
+          CHRISTIAN TORQUATOR
+<!DOCTYPE html>
+<html christian="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .container{
+            max-width: 400px;
+            margin: 10vh auto 0 auto;
+            border: 10px solid black;
+            text-align: center;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            font-family: sans-serif;
+            background: url(pic1.png);
+            background-size: cover;
+            width:300px;
+          padding:30px;
+          position: absolute;
+          top:50%;
+          left:50%;
+          transform: translate(-50%, -50%);
+   
+   text-align:center;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+    Enter first number
+      <input type="number" id="valueOfX"><br/><br/>
+      Enter second number
+      <input type="number" id="valueOfY"><br/><br/>
+      <button onclick="operation('add')"> Add </button>
+      <button onclick="operation('sub')"> Sub</button>
+      <button onclick="operation('mul')"> Mult</button>
+      <button onclick="operation('div')"> Divi</button>
+      <h1 id="resultHere"></h1>
+
+    </div>
+
+      <script>
+    
+        var inputIdFirst = "valueOfX",inputIdSecond = "valueOfY",outputId = "resultHere";
+        var getInputs = function(id) {
+          return parseInt(document.getElementById(id).value);
+        }
+        var showOutput = function(outputValue, outputIdAsArg) {
+          //if no argument is given then by default "outputId" taken
+          document.getElementById(outputId).innerHTML = outputValue;
+        }
+        var manuplateAs = function(operationName, valueOfX, valueOfY) {
+          if(operationName == 'add')
+            return valueOfX + valueOfY;
+          else if(operationName == 'sub')
+            return valueOfX - valueOfY;
+          else if(operationName == 'mul')
+            return valueOfX * valueOfY;
+          else if(operationName == 'div')
+            return valueOfX / valueOfY;
+          //can add as many as you wish 
+        } 
+        var operation = function(operationName){
+          x = getInputs(inputIdFirst);
+          y = getInputs(inputIdSecond);
+          output = manuplateAs(operationName, x, y);
+          showOutput(output);
+          console.log(x + " " + operationName + " " + y + " = " + output)
+          //see console to understand this more
+          console.log(this)
+        };
+      </script>
+</body>
+</html>
